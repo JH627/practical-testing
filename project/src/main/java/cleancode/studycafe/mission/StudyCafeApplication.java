@@ -1,19 +1,19 @@
 package cleancode.studycafe.mission;
 
-import cleancode.studycafe.mission.config.MachineConfig;
-import cleancode.studycafe.mission.io.ConsoleInputHandler;
-import cleancode.studycafe.mission.io.ConsoleOutputHandler;
+import cleancode.studycafe.mission.io.provider.LockerPassFileReader;
+import cleancode.studycafe.mission.io.provider.SeatPassFileReader;
+import cleancode.studycafe.mission.provider.LockerPassProvider;
+import cleancode.studycafe.mission.provider.SeatPassProvider;
 
 public class StudyCafeApplication {
 
     public static void main(String[] args) {
+        SeatPassProvider seatPassProvider = new SeatPassFileReader();
+        LockerPassProvider lockerPassProvider = new LockerPassFileReader();
 
-        MachineConfig machineConfig = new MachineConfig(
-            new ConsoleInputHandler(),
-            new ConsoleOutputHandler()
+        StudyCafePassMachine studyCafePassMachine = new StudyCafePassMachine(
+            seatPassProvider, lockerPassProvider
         );
-
-        StudyCafePassMachine studyCafePassMachine = new StudyCafePassMachine(machineConfig);
         studyCafePassMachine.run();
     }
 
