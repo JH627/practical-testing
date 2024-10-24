@@ -12,4 +12,16 @@ public class MailSendClient {
         // mock 처리를 할 것이기 때문에 터지지 않음
         throw new IllegalArgumentException("메일 전송");
     }
+
+    public void a() {
+        log.info("a");
+    }
+
+    public void b() {
+        log.info("b");
+    }
+
+    public void c() {
+        log.info("c");
+    }
 }
